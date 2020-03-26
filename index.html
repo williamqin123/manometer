@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+
+	<title>Man-O-Meter: How Manly Are You?</title>
+	<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css'>
+
+	<style>
+		#meter {
+			position: -webkit-sticky;
+			position: sticky;
+			top: 0;
+			z-index: 100;
+		}
+		header {
+			position: relative;
+			z-index: 1000;
+		}
+
+		#meter .progress {
+			height: 1.5rem;
+		}
+
+		small {
+			display: block !important;
+		}
+
+		.flex-grow-0 label {
+			white-space: nowrap;
+		}
+
+		footer {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index: 100;
+		}
+
+		.main {
+			margin-bottom: 10rem;
+		}
+
+		#meter .col {
+			padding: 0 2px !important;
+		}
+
+		#meter .row .col:nth-child(1) .progress {
+			border-radius: 999px 0 0 999px !important;
+		}
+		#meter .row .col:nth-child(2) .progress, #meter .row .col:nth-child(3) .progress {
+			border-radius: 0 !important;
+		}
+		#meter .row .col:nth-child(4) .progress {
+			border-radius: 0 999px 999px 0 !important;
+		}
+
+		.questions.disabled {
+			pointer-events: none;
+			opacity: 0.5;
+			filter: blur(2px);
+		}
+		.questions.disabled .card {
+			background: #b6babe;
+		}
+	</style>
+</head>
+<body class='bg-light'>
+	<header class='pt-5 pb-3 bg-white'>
+		<div class='container'>
+			<h1 class='display-4 text-center m-0'>
+				Man-O-Meter
+			</h1>
+		</div>
+	</header>
+	<main>
+		<div id='meter' class='py-3 bg-white shadow'>
+			<div class='container'>
+
+				<div class='row text-center m-0'>
+					<div class='col'>
+						<div class="progress">
+						  <div class="progress-bar progress-bar-striped bg-danger" style="width: 0"></div>
+						</div>
+						<h6 class='text-danger mb-0 mt-2'>Faggot</h6>
+					</div>
+					<div class='col'>
+						<div class="progress">
+						  <div class="progress-bar progress-bar-striped bg-secondary" style="width: 0"></div>
+						</div>
+						<h6 class='text-secondary mb-0 mt-2'>Man</h6>
+					</div>
+					<div class='col'>
+						<div class="progress">
+						  <div class="progress-bar progress-bar-striped bg-success" style="width: 0"></div>
+						</div>
+						<h6 class='text-success mb-0 mt-2'>Masculine Man</h6>
+					</div>
+					<div class='col'>
+						<div class="progress">
+						  <div class="progress-bar progress-bar-striped bg-info" style="width: 0"></div>
+						</div>
+						<h6 class='text-info mb-0 mt-2'>Alpha Male</h6>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class='container pt-5 main'>
+			<p class='lead text-center mb-4'>
+				Answer the following questions to measure your masculinity level.
+			</p>
+
+
+
+			<div class="card shadow-sm mb-4" id='chromosomal-check'>
+			  <div class="card-body">
+			    <h5 class="card-title">Do you have XY chromosomes?</h5>
+			    <h6 class="card-subtitle mb-2 text-muted">You must be a biological male to continue</h6>
+			    <div class="card-text">
+			    	
+			    	<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="xy-chromosomes" value="yes">
+						  <label class="form-check-label">Yes</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="xy-chromosomes" value="no">
+						  <label class="form-check-label">No</label>
+						</div>
+
+			    </div>
+			  </div>
+			</div>
+
+			<div class='questions disabled' id='main-bloc'>
+
+				<h2 class='mx-4 mb-3'>Sexual Success</h2>
+
+				<div class="card shadow-sm mb-3" id='sex-check'>
+				  <div class="card-body">
+				    <h5 class="card-title">Are you straight AND NOT a virgin?</h5>
+				    <div class="card-text">
+				    	
+				    	<div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="pass" value="good">
+							  <label class="form-check-label">Yes</label>
+							</div>
+							<div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="pass" value="no">
+							  <label class="form-check-label">No</label>
+							</div>
+
+							<small class='text-danger mt-2'>
+								Warning: if you pick no, your score will be locked to the "faggot" category.
+							</small>
+
+				    </div>
+				  </div>
+				</div>
+
+				<div class='questions disabled' id='sex-bloc'>
+					<div class="card shadow-sm mb-3">
+					  <div class="card-body">
+					    <h5 class="card-title">At what age did you lose your virginity?</h5>
+					    <div class="card-text">
+					    	
+					    	<div class="form-group mb-0">
+					    		<div class='input-group'>
+							    	<input type="number" class="form-control" placeholder="Enter a number" name='v-card-loss-age'>
+							    	<div class="input-group-append">
+		                  <div class="input-group-text">years</div>
+		                </div>
+							    </div>
+							  </div>
+
+					    </div>
+					  </div>
+					</div>
+
+					<div class="card shadow-sm mb-3">
+					  <div class="card-body">
+					    <h5 class="card-title">How many times per week do you have sex with women?</h5>
+					    <div class="card-text">
+					    	
+					    	<div class="form-check form-check">
+								  <input class="form-check-input" type="radio" name="sex-frequency" value="1">
+								  <label class="form-check-label">0</label>
+								</div>
+								<div class="form-check form-check">
+								  <input class="form-check-input" type="radio" name="sex-frequency" value="2">
+								  <label class="form-check-label">1 &ndash; 2</label>
+								</div>
+								<div class="form-check form-check">
+								  <input class="form-check-input" type="radio" name="sex-frequency" value="3">
+								  <label class="form-check-label">3 &ndash; 4</label>
+								</div>
+								<div class="form-check form-check">
+								  <input class="form-check-input" type="radio" name="sex-frequency" value="4">
+								  <label class="form-check-label">5 &ndash; 6</label>
+								</div>
+								<div class="form-check form-check">
+								  <input class="form-check-input" type="radio" name="sex-frequency" value="5">
+								  <label class="form-check-label">7+</label>
+								</div>
+
+					    </div>
+					  </div>
+					</div>
+
+					<div class="card shadow-sm mb-3">
+					  <div class="card-body">
+					    <h5 class="card-title">How many different women have you been with in the past year?</h5>
+					    <div class="card-text">
+					    	
+					    	<div class="form-group mb-0">
+							    <input type="number" class="form-control" placeholder="Enter a number" name='yearly-females'>
+							  </div>
+
+					    </div>
+					  </div>
+					</div>
+				</div>
+
+				<div class="card shadow-sm mb-4">
+				  <div class="card-body">
+				    <h5 class="card-title">What's your penis size (length and circumference in inches)?</h5>
+				    <div class="card-text">
+				    	
+				    	<div class="form-group mb-0">
+
+						    <div class="row">
+							    <div class="col">
+				    				<label>Length:</label>
+							      <div class='input-group'>
+							      	<input type="number" class="form-control" placeholder="Length" name='size-length'>
+								    	<div class="input-group-append">
+			                  <div class="input-group-text">in</div>
+			                </div>
+								    </div>
+							    </div>
+							    <div class="col">
+				    				<label>Girth:</label>
+				    				<div class='input-group'>
+							      	<input type="number" class="form-control" placeholder="Girth" name='size-girth'>
+								    	<div class="input-group-append">
+			                  <div class="input-group-text">in</div>
+			                </div>
+								    </div>
+							    </div>
+							  </div>
+						  </div>
+
+				    </div>
+				  </div>
+				</div>
+
+
+
+				<h2 class='mx-4 mb-3'>Physical Fitness</h2>
+
+				<div class="card shadow-sm mb-3">
+				  <div class="card-body">
+				    <h5 class="card-title">How many days per week do you work out?</h5>
+				    <div class="card-text">
+				    	
+				    	<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="workout-frequency" value="1">
+							  <label class="form-check-label">None</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="workout-frequency" value="2">
+							  <label class="form-check-label">1 &ndash; 2</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="workout-frequency" value="3">
+							  <label class="form-check-label">3 &ndash; 4</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="workout-frequency" value="4">
+							  <label class="form-check-label">5 &ndash; 6</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="workout-frequency" value="5">
+							  <label class="form-check-label">Every day</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="workout-frequency" value="6">
+							  <label class="form-check-label">Multiple sessions daily</label>
+							</div>
+
+				    </div>
+				  </div>
+				</div>
+
+				<div class="card shadow-sm mb-3">
+				  <div class="card-body">
+				    <h5 class="card-title">What's your body fat percentage?</h5>
+				    <div class="card-text">
+				    	
+				    	<div class="form-group mb-0">
+				    		<div class='input-group'>
+						    	<input type="number" class="form-control" placeholder="Enter a number" name='bfp'>
+						    	<div class="input-group-append">
+	                  <div class="input-group-text">%</div>
+	                </div>
+						    </div>
+						  </div>
+
+				    </div>
+				  </div>
+				</div>
+
+				<div class="card shadow-sm mb-4">
+				  <div class="card-body">
+				  	<a class="btn btn-primary float-right" data-toggle="collapse" href="#fitness-details">
+					    Show/hide
+					  </a>
+
+				    <h5 class="card-title">Exercise statistics:</h5>
+			    	<h6 class="card-subtitle m-0 text-muted">Optional</h6>
+
+				    <div class="card-text collapse" id='fitness-details'>
+				    	<hr>
+				    	<div class="form-group">
+    						<label>Push-ups without stopping:</label>
+						    <input type="number" class="form-control" placeholder="Enter number" name='push-ups'>
+						  </div>
+						  <div class="form-group">
+    						<label>Pull-ups without stopping:</label>
+						    <input type="number" class="form-control" placeholder="Enter number" name='pull-ups'>
+						  </div>
+						  <div class="form-group">
+    						<label>Max bench press weight:</label>
+    						<div class="input-group">
+						    	<input type="number" class="form-control" placeholder="Enter pounds" name='bench-press'>
+						    	<div class="input-group-append">
+	                  <div class="input-group-text">lb</div>
+	                </div>
+						    </div>
+						  </div>
+						  <div class="form-group">
+    						<label>Max deadlift weight:</label>
+    						<div class="input-group">
+						    	<input type="number" class="form-control" placeholder="Enter pounds" name='deadlift'>
+						    	<div class="input-group-append">
+	                  <div class="input-group-text">lb</div>
+	                </div>
+						    </div>
+						  </div>
+						  <div class="form-group mb-0">
+    						<label>Mile time:</label>
+
+							  <div class="input-group">
+		                <input type="number" class="form-control" placeholder="Minutes" name='mile-minutes'>
+		                <div class="input-group-prepend input-group-append">
+		                  <div class="input-group-text">
+							    			<strong>:</strong>
+							    		</div>
+		                </div>
+		                <input type="number" class="form-control" placeholder="Seconds" name='mile-seconds'>
+		            </div>
+						  </div>
+
+				    </div>
+				  </div>
+				</div>
+
+				<h2 class='mx-4 mb-3'>Aesthetics</h2>
+
+				<div class="card shadow-sm mb-3">
+				  <div class="card-body">
+				    <h5 class="card-title">Do you have a protruding brow ridge?</h5>
+				    <div class="card-text">
+				    	
+				    	<div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="brow" value="yes">
+							  <label class="form-check-label">Yes</label>
+							</div>
+							<div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="brow" value="ok">
+							  <label class="form-check-label">Somewhat</label>
+							</div>
+							<div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="brow" value="no">
+							  <label class="form-check-label">No</label>
+							</div>
+
+				    </div>
+				  </div>
+				</div>
+
+				<div class="card shadow-sm mb-3">
+				  <div class="card-body">
+				    <h5 class="card-title">Do you have a long, wide, angular, and chiseled jaw?</h5>
+				    <div class="card-text">
+				    	
+				    	<div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="jaw" value="yes">
+							  <label class="form-check-label">Yes</label>
+							</div>
+							<div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="jaw" value="ok">
+							  <label class="form-check-label">Somewhat</label>
+							</div>
+							<div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="jaw" value="no">
+							  <label class="form-check-label">No</label>
+							</div>
+
+				    </div>
+				  </div>
+				</div>
+
+				<div class="card shadow-sm mb-3">
+				  <div class="card-body">
+				    <h5 class="card-title">Do you have a thick neck?</h5>
+				    <div class="card-text">
+				    	
+				    	<div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="neck" value="yes">
+							  <label class="form-check-label">Yes</label>
+							</div>
+							<div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="neck" value="ok">
+							  <label class="form-check-label">Somewhat</label>
+							</div>
+							<div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="neck" value="no">
+							  <label class="form-check-label">No</label>
+							</div>
+
+				    </div>
+				  </div>
+				</div>
+
+				<div class="card shadow-sm mb-3">
+				  <div class="card-body">
+				    <h5 class="card-title">What's the ratio between the width of your shoulders and the width of your hips?</h5>
+				    <div class="card-text">
+				    	
+				    	<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="frame" value="1">
+							  <label class="form-check-label">Less than 1.0</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="frame" value="2">
+							  <label class="form-check-label">1.0 &ndash; 1.25</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="frame" value="3">
+							  <label class="form-check-label">1.25 &ndash; 1.5</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="frame" value="4">
+							  <label class="form-check-label">1.5 &ndash; 1.75</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="frame" value="5">
+							  <label class="form-check-label">1.75 &ndash; 2.0</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="frame" value="6">
+							  <label class="form-check-label">2.0+</label>
+							</div>
+
+				    </div>
+				  </div>
+				</div>
+
+				<div class="card shadow-sm mb-4">
+				  <div class="card-body">
+				    <h5 class="card-title">How tall are you?</h5>
+				    <div class="card-text">
+				    	
+				    	<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="height" value="1">
+							  <label class="form-check-label">5'5" or shorter</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="height" value="2">
+							  <label class="form-check-label">5'6" &ndash; 5'8"</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="height" value="3">
+							  <label class="form-check-label">5'9" &ndash; 5'11"</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="height" value="4">
+							  <label class="form-check-label">6'0" &ndash; 6'2"</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="height" value="5">
+							  <label class="form-check-label">6'3" &ndash; 6'5"</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="height" value="6">
+							  <label class="form-check-label">6'6" or taller</label>
+							</div>
+
+				    </div>
+				  </div>
+				</div>
+
+				<h2 class='mx-4 mb-3'>Finances & Lifestyle</h2>
+
+				<div class="card shadow-sm mb-3">
+				  <div class="card-body">
+				    <h5 class="card-title">What's your annual income before taxes?</h5>
+				    <div class="card-text">
+				    	
+				    	<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="income" value="1">
+							  <label class="form-check-label">$19,999 or less</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="income" value="2">
+							  <label class="form-check-label">$20,000 &ndash; $49,999</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="income" value="3">
+							  <label class="form-check-label">$50,000 &ndash; $99,999</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="income" value="4">
+							  <label class="form-check-label">$100,000 &ndash; $499,999</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="income" value="5">
+							  <label class="form-check-label">$500,000 &ndash; $1 million</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="income" value="6">
+							  <label class="form-check-label">$1 million &ndash; $10 million</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="income" value="7">
+							  <label class="form-check-label">More than $10 million</label>
+							</div>
+
+				    </div>
+				  </div>
+				</div>
+
+				<div class="card shadow-sm mb-3">
+				  <div class="card-body">
+				    <h5 class="card-title">Which of the following categories of "rich" are you in?</h5>
+				    <div class="card-text">
+				    	
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="rich" value="mil">
+							  <label class="form-check-label">Millionaire</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="rich" value="bil">
+							  <label class="form-check-label">Billionaire</label>
+							</div>
+
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="rich" value="no">
+							  <label class="form-check-label">None of the above</label>
+							</div>
+
+				    </div>
+				  </div>
+				</div>
+
+				<div class="card shadow-sm mb-3">
+				  <div class="card-body">
+				    <h5 class="card-title">Which of the following luxuries do you own?</h5>
+			    	<h6 class="card-subtitle mb-2 text-muted">Select all that apply</h6>
+				    <div class="card-text">
+				    	
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="checkbox" name="items" value="1">
+							  <label class="form-check-label">Sports car</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="checkbox" name="items" value="2">
+							  <label class="form-check-label">Yacht</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="checkbox" name="items" value="3">
+							  <label class="form-check-label">Private Jet</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="checkbox" name="items" value="4">
+							  <label class="form-check-label">Mansion</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="checkbox" name="items" value="5">
+							  <label class="form-check-label">High fashion and jewelry</label>
+							</div>
+
+				    </div>
+				  </div>
+				</div>
+
+				<div class="card shadow-sm mb-3">
+				  <div class="card-body">
+				    <h5 class="card-title">If you play video games, what are your games usually rated?</h5>
+				    <div class="card-text">
+				    	
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="games" value="e">
+							  <label class="form-check-label">E (Everyone)</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="games" value="e10">
+							  <label class="form-check-label">E10+ (Everyone 10 and up)</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="games" value="t">
+							  <label class="form-check-label">T (Teen)</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="games" value="m">
+							  <label class="form-check-label">M (Mature)</label>
+							</div>
+
+				    </div>
+				  </div>
+				</div>
+
+				<div class="card shadow-sm mb-4">
+				  <div class="card-body">
+				    <h5 class="card-title">Are/were you an athlete, and if so, what level?</h5>
+				    <div class="card-text">
+				    	
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="athletics" value="no">
+							  <label class="form-check-label">No sports</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="athletics" value="rec">
+							  <label class="form-check-label">Recreational sports</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="athletics" value="jv">
+							  <label class="form-check-label">JV team in high school</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="athletics" value="varsity">
+							  <label class="form-check-label">Varsity team in high school</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="form-check-input" type="radio" name="athletics" value="pro">
+							  <label class="form-check-label">Professional sports team (NFL, NBA, MLB, etc.)</label>
+							</div>
+
+				    </div>
+				  </div>
+				</div>
+
+			</div>
+
+			<p class='lead text-center mb-0'>
+				You reached the end of the questionaire.
+				Look at the bar at the top to see your result.
+			</p>
+
+		</div>
+	</main>
+
+	<footer class='bg-white py-3 shadow'>
+		<div class='container'>
+			<div class='row'>
+				<div class='col flex-grow-0'>
+					<label class='m-0'>
+						Questionaire completion:
+					</label>
+				</div>
+				<div class='col flex-grow-1'>
+					<div class="progress mt-1">
+					  <div class="progress-bar" style="width: 0">
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<script
+	  src="https://code.jquery.com/jquery-3.4.1.min.js"
+	  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	  crossorigin="anonymous"></script>
+	<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js'></script>
+
+	<script>
+
+		function linterp(x, a, b) {
+			return a * (1 - x) + b * (x);
+		}
+
+		function setScore(masculinity) {
+			var scales = [
+				[enabled() ? 0.1 : 0, 0.95],
+				[0.05, 0.95],
+				[0.05, 0.95],
+				[0.05, 1]
+			];
+			var v = masculinity;
+			for (let [index, segment] of $('#meter .progress-bar').toArray().entries()) {
+				$(segment).css('width', Math.max(Math.min((v < 1 && v >= 0) ? linterp(v, ...scales[index]) : v, 1), 0) * 100 + '%');
+				v -= 1;
+			}
+		}
+
+		function lookup(dict, key) {
+			if (dict.hasOwnProperty(key.val())) {
+				return dict[key.val()];
+			}
+			return 0;
+		}
+
+		function enabled() {
+			return $('[name="xy-chromosomes"][value="yes"]').is(':checked');
+		}
+
+		function straightNonVirgin() {
+			return !$('[name="pass"][value="no"]').is(':checked');
+		}
+
+		function sigmoid(a, b, c, d, x) {
+			return 2*b * (1 / (1 + Math.E**(-(x - c)/a)) - 0.5) + d;
+		}
+
+		function recalc() {
+
+			const bodyFat = Number($('input[name="bfp"]').val());
+			const defaultBodyFat = 15;
+
+			var vCard = $('input[name="v-card-loss-age"]').val();
+			vCard = vCard === '' ? -1 : Number(vCard);
+			const defaultVcard = 17;
+
+			var girls = $('input[name="yearly-females"]').val();
+			girls = girls === '' ? -1 : Number(girls);
+			const defaultGirls = 3.5;
+
+			var length = $('input[name="size-length"]').val();
+			length = length === '' ? -1 : Number(length);
+			const defaultLength = 5.5;
+
+			var girth = $('input[name="size-girth"]').val();
+			girth = girth === '' ? -1 : Number(girth);
+			const defaultGirth = 5;
+
+			var masculinity = straightNonVirgin() * enabled() * (
+
+			(enabled() ? 1.5 : 0) +
+			0.4 * (
+				lookup({
+					'no' : -0.2,
+					'rec' : 0,
+					'jv' : 0.1,
+					'varsity' : 0.2,
+					'pro' : 0.3
+				}, $('input[name="athletics"]:checked')) +
+				lookup({
+					'e' : -0.1,
+					'e10' : -0.05,
+					't' : 0,
+					'm' : 0.05
+				}, $('input[name="games"]:checked')) +
+				lookup({
+					'mil' : 0.2,
+					'bil' : 0.4,
+					'no' : 0
+				}, $('input[name="rich"]:checked')) +
+				lookup({
+					'1' : -0.2,
+					'2' : -0.1,
+					'3' : 0,
+					'4' : 0.1,
+					'5' : 0.2,
+					'6' : 0.3,
+					'7' : 0.4
+				}, $('input[name="income"]:checked')) +
+				$('[name="items"][value="1"]').is(':checked') * 0.1 +
+				$('[name="items"][value="2"]').is(':checked') * 0.1 +
+				$('[name="items"][value="3"]').is(':checked') * 0.1 +
+				$('[name="items"][value="4"]').is(':checked') * 0.1 +
+				$('[name="items"][value="5"]').is(':checked') * 0.1
+			) +
+			0.5 * (
+				lookup({
+					'yes' : 0.1,
+					'ok' : 0,
+					'no' : -0.1
+				}, $('input[name="brow"]:checked')) +
+				lookup({
+					'yes' : 0.1,
+					'ok' : 0,
+					'no' : -0.1
+				}, $('input[name="neck"]:checked')) +
+				lookup({
+					'yes' : 0.2,
+					'ok' : 0,
+					'no' : -0.2
+				}, $('input[name="jaw"]:checked')) +
+				lookup({
+					'1' : -0.5,
+					'2' : -0.3,
+					'3' : 0,
+					'4' : 0.2,
+					'5' : 0.3,
+					'6' : 0.4
+				}, $('input[name="height"]:checked')) +
+				lookup({
+					'1' : -0.5,
+					'2' : -0.4,
+					'3' : -0.3,
+					'4' : 0,
+					'5' : 0.1,
+					'6' : 0.2
+				}, $('input[name="frame"]:checked'))
+			) +
+			0.6 * (
+				lookup({
+					'1' : -0.25,
+					'2' : -0.05,
+					'3' : 0,
+					'4' : 0.05,
+					'5' : 0.1,
+					'6' : 0.15
+				}, $('input[name="workout-frequency"]:checked')) +
+				sigmoid(5, -0.5, 15, 0, (bodyFat > 0 && bodyFat <= 100 ? bodyFat : defaultBodyFat))
+			) +
+			0.8 * (
+				lookup({
+					'1' : -0.25,
+					'2' : -0.05,
+					'3' : 0,
+					'4' : 0.1,
+					'5' : 0.2
+				}, $('input[name="sex-frequency"]:checked')) +
+				sigmoid(2, -0.75, 18, -0.2, (vCard >= 0 ? vCard : defaultVcard)) +
+				Math.log10(sigmoid(100, 1, 0, 0, (girls >= 0 ? girls : defaultGirls) + 0.1)) + 1.75 +
+				sigmoid(1, 1, 5.5, 0, (length >= 0 ? length : defaultLength)) +
+				sigmoid(0.75, 1, 5, 0, (girth >= 0 ? girth : defaultGirth))
+			)
+			);
+
+			setScore(masculinity);
+		}
+		
+		$(document).on('input', (e) => {
+			recalc();
+			//updateProgress();
+		});
+
+		$('#chromosomal-check').on('input', (e) => {
+			$('#main-bloc')[enabled() ? 'removeClass' : 'addClass']('disabled');
+		});
+
+		$('#sex-check').on('input', (e) => {
+			$('#sex-bloc')[straightNonVirgin() ? 'removeClass' : 'addClass']('disabled');
+		});
+
+	</script>
+
+</body>
+</html>
