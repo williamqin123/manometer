@@ -928,12 +928,12 @@
 
 		function setScore(masculinity) {
 			var scales = [
-				[[0, 1], [enabled() ? 0.1 : 0, 0.95]],
+				[[0, 1], [(enabled() ? 0.1 : 0), 0.95]],
 				[[1, 2], [1.05, 1.95]],
 				[[2, 3], [2.05, 2.95]],
 				[[3, 4], [3.05, 4]]
 			];
-			var v = masculinity;
+			var v = Math.max(Math.min(masculinity, 4), 0);
 
 			for (let zone of scales) {
 				if (v >= zone[0][0] && v < zone[0][1]) {
@@ -942,7 +942,7 @@
 				}
 			}
 
-			const percentage = Math.max(Math.min(v / 4, 1), 0) * 100;
+			const percentage = v / 4 * 100;
 
 			$("#meter .progress-bar").css('width', percentage + '%');
 			$("#indicator").css('left', percentage + '%');
