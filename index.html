@@ -7,7 +7,7 @@
 	<title>Man-O-Meter: How Manly Are You?</title>
 	<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css'>
 
-		<!-- Global site tag (gtag.js) - Google Analytics -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-123661131-4"></script>
 	<script>
 	  window.dataLayer = window.dataLayer || [];
@@ -30,6 +30,10 @@
 	</script>
 
 	<style>
+		html {
+			scroll-behavior: smooth;
+		}
+
 		#meter {
 			position: -webkit-sticky;
 			position: sticky;
@@ -59,6 +63,8 @@
 			left: 0;
 			right: 0;
 			z-index: 100;
+			transition: bottom 0.5s ease-in, opacity 0.5s ease-in;
+			opacity: 1;
 		}
 
 		.main {
@@ -119,6 +125,9 @@
 		.img-thumbnail {
 			max-height: 5rem;
 		}
+		.img-thumbnail.lg {
+			max-height: 15rem;
+		}
 		.img-fluid {
 			max-height: 10rem;
 		}
@@ -136,12 +145,29 @@
 			height: 0.5rem;
 			transition: left 0.6s ease;
 		}
+
+		.result.card {
+			display: none;
+		}
+
+		[data-type='loser'] #result-loser,
+		[data-type='ordinary'] #result-ordinary,
+		[data-type='masculine'] #result-masculine,
+		[data-type='alpha'] #result-alpha
+		{
+			display: block;
+		}
+
+		footer.faded1 {
+			opacity: 0;
+			bottom: -2.5rem;
+		}
 	</style>
 
 	<script src="https://kit.fontawesome.com/58c4fcdd03.js" crossorigin="anonymous"></script>
 
 </head>
-<body class='bg-light'>
+<body class='bg-light' data-type='loser'>
 	<header class='pt-4 pb-3 bg-white'>
 		<div class='container'>
 			<h1 class='display-4 text-center m-0'>
@@ -172,7 +198,7 @@
 						<h6 class='text-secondary mb-0 mt-2'>Man</h6>
 					</div>
 					<div class='col'>
-						<h6 class='text-success mb-0 mt-2'>Masculine Man</h6>
+						<h6 class='text-success mb-0 mt-2'>Manly Man</h6>
 					</div>
 					<div class='col'>
 						<h6 class='text-info mb-0 mt-2'>Alpha Male</h6>
@@ -182,9 +208,17 @@
 			</div>
 		</div>
 		<div class='container pt-5 main'>
-			<p class='lead text-center mb-4'>
+			<p class='lead text-center mb-2'>
 				Answer the following questions to measure your masculinity level.
 			</p>
+			<p class='text-center mb-4'>
+				<em>
+					<small class='text-muted'>
+						Disclaimer: This website is intended as a joke.
+					</small>
+				</em>
+			</p>
+
 
 
 
@@ -209,13 +243,13 @@
 
 			<div class='questions disabled' id='main-bloc'>
 
-				<h2 class='mx-4 mb-3'>
-					<i class="fas fa-heart"></i>&emsp13;Sexual Success
+				<h2 class='mx-4 mb-3 pt-2'>
+					<i class="fas fa-venus-mars"></i>&emsp13;Sexual Success
 				</h2>
 
-				<div class="card shadow-sm mb-3" id='sex-check'>
+				<div class="card shadow-sm mb-3">
 				  <div class="card-body">
-				    <h5 class="card-title">Are you straight AND NOT a virgin?</h5>
+				    <h5 class="card-title">Are you straight?</h5>
 				    <div class="card-text">
 				    	
 				    	<div class="form-check form-check-inline">
@@ -229,6 +263,23 @@
 
 							<small class='text-danger mt-2'>
 								Warning: if you pick no, your score will be locked to the "loser" category.
+							</small>
+
+				    </div>
+				  </div>
+				</div>
+
+				<div class="card shadow-sm mb-3" id='sex-check'>
+				  <div class="card-body">
+				    <h5 class="card-title">How many sexual partners have you had?</h5>
+				    <div class="card-text">
+				    	
+				    	<div class="form-group mb-0">
+						    <input type="number" class="form-control" placeholder="Enter a number" name='lifetime-females'>
+						  </div>
+
+						  <small class='text-danger mt-2'>
+								Warning: if you enter 0 (i.e. if you're a virgin), your score will be locked to the "loser" category.
 							</small>
 
 				    </div>
@@ -256,7 +307,7 @@
 
 					<div class="card shadow-sm mb-3">
 					  <div class="card-body">
-					    <h5 class="card-title">How many times per week do you have sex with women?</h5>
+					    <h5 class="card-title">How many times per week do you get laid?</h5>
 					    <div class="card-text">
 					    	
 					    	<div class="form-check form-check">
@@ -284,29 +335,17 @@
 					  </div>
 					</div>
 
-					<div class="card shadow-sm mb-3">
-					  <div class="card-body">
-					    <h5 class="card-title">How many different women have you been with in the past year?</h5>
-					    <div class="card-text">
-					    	
-					    	<div class="form-group mb-0">
-							    <input type="number" class="form-control" placeholder="Enter a number" name='yearly-females'>
-							  </div>
-
-					    </div>
-					  </div>
-					</div>
 				</div>
 
 				<div class="card shadow-sm mb-4">
 				  <div class="card-body">
 				    <h5 class="card-title">What's your penis size (length and circumference in inches)?</h5>
 				    <div class="card-text">
-				    	
-				    	<div class="form-group mb-0">
 
-						    <div class="row">
-							    <div class="col">
+					    <div class="row">
+						    <div class="col">
+				    	
+				    			<div class="form-group mb-0">
 				    				<label>Length:</label>
 							      <div class='input-group'>
 							      	<input type="number" class="form-control" placeholder="Length" name='size-length'>
@@ -315,7 +354,9 @@
 			                </div>
 								    </div>
 							    </div>
-							    <div class="col">
+							  </div>
+							  <div class="col">
+				    			<div class="form-group mb-0">
 				    				<label>Girth:</label>
 				    				<div class='input-group'>
 							      	<input type="number" class="form-control" placeholder="Girth" name='size-girth'>
@@ -331,142 +372,7 @@
 				  </div>
 				</div>
 
-
-
-				<h2 class='mx-4 mb-3'>
-					<i class="fas fa-dumbbell"></i>&emsp13;Physical Fitness
-				</h2>
-
-				<div class="card shadow-sm mb-3">
-				  <div class="card-body">
-				    <h5 class="card-title">How many days per week do you work out?</h5>
-				    <div class="card-text">
-				    	
-				    	<div class="form-check form-check">
-							  <input class="data-hj-whitelist form-check-input" type="radio" name="workout-frequency" value="1">
-							  <label class="form-check-label">None</label>
-							</div>
-							<div class="form-check form-check">
-							  <input class="data-hj-whitelist form-check-input" type="radio" name="workout-frequency" value="2">
-							  <label class="form-check-label">1 &ndash; 2</label>
-							</div>
-							<div class="form-check form-check">
-							  <input class="data-hj-whitelist form-check-input" type="radio" name="workout-frequency" value="3">
-							  <label class="form-check-label">3 &ndash; 4</label>
-							</div>
-							<div class="form-check form-check">
-							  <input class="data-hj-whitelist form-check-input" type="radio" name="workout-frequency" value="4">
-							  <label class="form-check-label">5 &ndash; 6</label>
-							</div>
-							<div class="form-check form-check">
-							  <input class="data-hj-whitelist form-check-input" type="radio" name="workout-frequency" value="5">
-							  <label class="form-check-label">Every day</label>
-							</div>
-							<div class="form-check form-check">
-							  <input class="data-hj-whitelist form-check-input" type="radio" name="workout-frequency" value="6">
-							  <label class="form-check-label">Multiple sessions daily</label>
-							</div>
-
-				    </div>
-				  </div>
-				</div>
-
-				<div class="card shadow-sm mb-3">
-				  <div class="card-body">
-				    <h5 class="card-title">What's your body fat percentage?</h5>
-				    <div class="card-text">
-				    	
-				    	<div class="form-group mb-0">
-				    		<div class='input-group'>
-						    	<input type="number" class="form-control" placeholder="Enter a number" name='bfp'>
-						    	<div class="input-group-append">
-	                  <div class="input-group-text">%</div>
-	                </div>
-						    </div>
-						  </div>
-
-				    </div>
-				  </div>
-				</div>
-
-				<div class="card shadow-sm mb-3">
-				  <div class="card-body">
-				    <h5 class="card-title">Do you have visible six-pack abs?</h5>
-				    <div class="card-text">
-				    	
-				    	<div class="form-check form-check-inline">
-							  <input class="data-hj-whitelist form-check-input" type="radio" name="abs" value="yes">
-							  <label class="form-check-label">Yes</label>
-							</div>
-							<div class="form-check form-check-inline">
-							  <input class="data-hj-whitelist form-check-input" type="radio" name="abs" value="ok">
-							  <label class="form-check-label">Somewhat</label>
-							</div>
-							<div class="form-check form-check-inline">
-							  <input class="data-hj-whitelist form-check-input" type="radio" name="abs" value="no">
-							  <label class="form-check-label">No</label>
-							</div>
-
-				    </div>
-				  </div>
-				</div>
-
-				<div class="card shadow-sm mb-4">
-				  <div class="card-body">
-				  	<a class="btn btn-primary float-right" data-toggle="collapse" href="#fitness-details">
-					    Show/hide
-					  </a>
-
-				    <h5 class="card-title">Exercise statistics:</h5>
-			    	<h6 class="card-subtitle m-0 text-muted">Optional</h6>
-
-				    <div class="card-text collapse" id='fitness-details'>
-				    	<hr>
-				    	<div class="form-group">
-    						<label>Push-ups without stopping:</label>
-						    <input type="number" class="form-control" placeholder="Enter number" name='push-ups'>
-						  </div>
-						  <div class="form-group">
-    						<label>Pull-ups without stopping:</label>
-						    <input type="number" class="form-control" placeholder="Enter number" name='pull-ups'>
-						  </div>
-						  <div class="form-group">
-    						<label>Max bench press weight:</label>
-    						<div class="input-group">
-						    	<input type="number" class="form-control" placeholder="Enter pounds" name='bench-press'>
-						    	<div class="input-group-append">
-	                  <div class="input-group-text">lb</div>
-	                </div>
-						    </div>
-						  </div>
-						  <div class="form-group">
-    						<label>Max deadlift weight:</label>
-    						<div class="input-group">
-						    	<input type="number" class="form-control" placeholder="Enter pounds" name='deadlift'>
-						    	<div class="input-group-append">
-	                  <div class="input-group-text">lb</div>
-	                </div>
-						    </div>
-						  </div>
-						  <div class="form-group mb-0">
-    						<label>Mile time:</label>
-
-							  <div class="input-group">
-		                <input type="number" class="form-control" placeholder="Minutes" name='mile-minutes'>
-		                <div class="input-group-prepend input-group-append">
-		                  <div class="input-group-text">
-							    			<strong>:</strong>
-							    		</div>
-		                </div>
-		                <input type="number" class="form-control" placeholder="Seconds" name='mile-seconds'>
-		            </div>
-						  </div>
-
-				    </div>
-				  </div>
-				</div>
-
-				<h2 class='mx-4 mb-3'>
+				<h2 class='mx-4 mb-3 pt-2'>
 					<i class="fas fa-male"></i>&emsp13;Aesthetics
 				</h2>
 
@@ -636,41 +542,221 @@
 				  </div>
 				</div>
 
-				<div class="card shadow-sm mb-4">
+				<div class="card shadow-sm mb-4" id='height-entry'>
 				  <div class="card-body">
 				    <h5 class="card-title">How tall are you?</h5>
+			    	<h6 class="card-subtitle mb-2 text-muted">This will be used in the calculation of your physical fitness.</h6>
 				    <div class="card-text">
 				    	
 				    	<div class="form-check form-check">
-							  <input class="data-hj-whitelist form-check-input" type="radio" name="height" value="1">
-							  <label class="form-check-label">5'5" or shorter</label>
+							  <input class="data-hj-whitelist form-check-input" type="radio" name="height" value="62">
+							  <label class="form-check-label">5'2" or shorter</label>
+							</div>
+				    	<div class="form-check form-check">
+							  <input class="data-hj-whitelist form-check-input" type="radio" name="height" value="64">
+							  <label class="form-check-label">5'3" &ndash; 5'5"</label>
 							</div>
 							<div class="form-check form-check">
-							  <input class="data-hj-whitelist form-check-input" type="radio" name="height" value="2">
+							  <input class="data-hj-whitelist form-check-input" type="radio" name="height" value="67">
 							  <label class="form-check-label">5'6" &ndash; 5'8"</label>
 							</div>
 							<div class="form-check form-check">
-							  <input class="data-hj-whitelist form-check-input" type="radio" name="height" value="3">
+							  <input class="data-hj-whitelist form-check-input" type="radio" name="height" value="70">
 							  <label class="form-check-label">5'9" &ndash; 5'11"</label>
 							</div>
 							<div class="form-check form-check">
-							  <input class="data-hj-whitelist form-check-input" type="radio" name="height" value="4">
+							  <input class="data-hj-whitelist form-check-input" type="radio" name="height" value="73">
 							  <label class="form-check-label">6'0" &ndash; 6'2"</label>
 							</div>
 							<div class="form-check form-check">
-							  <input class="data-hj-whitelist form-check-input" type="radio" name="height" value="5">
+							  <input class="data-hj-whitelist form-check-input" type="radio" name="height" value="76">
 							  <label class="form-check-label">6'3" &ndash; 6'5"</label>
 							</div>
 							<div class="form-check form-check">
-							  <input class="data-hj-whitelist form-check-input" type="radio" name="height" value="6">
-							  <label class="form-check-label">6'6" or taller</label>
+							  <input class="data-hj-whitelist form-check-input" type="radio" name="height" value="79">
+							  <label class="form-check-label">6'6" &ndash; 6'8"</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="data-hj-whitelist form-check-input" type="radio" name="height" value="81">
+							  <label class="form-check-label">6'9" or taller</label>
 							</div>
 
 				    </div>
 				  </div>
 				</div>
 
-				<h2 class='mx-4 mb-3'>
+				<h2 class='mx-4 mb-3 pt-2'>
+					<i class="fas fa-running"></i>&emsp13;Physical Fitness
+				</h2>
+
+				<div class="card shadow mb-3" id='ffmi-calc'>
+					<div class='card-header bg-primary text-white'>
+				    <h4 class="card-title">Fat-Free Mass Index (FFMI) Calculation</h4>
+			    	<p class='mb-0'>
+			    		FFMI, or Fat Free Mass Index is a measurement of your lean mass compared to your height.
+			    	</p>
+					</div>
+				  <div class="card-body">
+				    <div class="card-text">
+				    	<div class="form-group">
+				    		<label>Height:</label>
+				    		<div class='input-group'>
+						    	<input type="text" class="form-control" name='height-autofill' disabled>
+						    </div>
+						    <small class="form-text text-muted">
+									*From <a href='#height-entry' class='text-muted'><u>previous question</u></a>
+								</small>
+						  </div>
+				    	<div class="form-group">
+				    		<label>Weight:</label>
+				    		<div class='input-group'>
+						    	<input type="number" class="form-control" placeholder="Weight in pounds" name='weight'>
+						    	<div class="input-group-append">
+	                  <div class="input-group-text">lb</div>
+	                </div>
+						    </div>
+						  </div>
+						  <div class="form-group mb-0">
+				    		<label>Body fat percentage:</label>
+				    		<div class='input-group'>
+						    	<input type="number" class="form-control" placeholder="Body fat %" name='bfp'>
+						    	<div class="input-group-append">
+	                  <div class="input-group-text">%</div>
+	                </div>
+						    </div>
+						  </div>
+
+						  <hr>
+
+						  <div class="form-group mb-0">
+				    		<h5>Your Fat-Free Mass Index:</h5>
+				    		<div class='input-group'>
+						    	<input type="text" class="form-control" name='ffmi-answer' disabled>
+						    </div>
+						    <small class="form-text text-muted">
+									95% of adult men have an FFMI between 17 and 21. An FFMI over 25 is bodybuilder/steroids territory.
+								</small>
+						  </div>
+
+				    </div>
+				  </div>
+				  <div class="card-footer text-muted bg-white">
+				    <a href="https://www.calculators.org/health/ffmi.php" target='_blank'>Information about FFMI</a>
+				  </div>
+				</div>
+
+				<div class="card shadow-sm mb-3">
+				  <div class="card-body">
+				    <h5 class="card-title">How many days per week do you work out?</h5>
+				    <div class="card-text">
+				    	
+				    	<div class="form-check form-check">
+							  <input class="data-hj-whitelist form-check-input" type="radio" name="workout-frequency" value="1">
+							  <label class="form-check-label">None</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="data-hj-whitelist form-check-input" type="radio" name="workout-frequency" value="2">
+							  <label class="form-check-label">1 &ndash; 2</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="data-hj-whitelist form-check-input" type="radio" name="workout-frequency" value="3">
+							  <label class="form-check-label">3 &ndash; 4</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="data-hj-whitelist form-check-input" type="radio" name="workout-frequency" value="4">
+							  <label class="form-check-label">5 &ndash; 6</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="data-hj-whitelist form-check-input" type="radio" name="workout-frequency" value="5">
+							  <label class="form-check-label">Every day</label>
+							</div>
+							<div class="form-check form-check">
+							  <input class="data-hj-whitelist form-check-input" type="radio" name="workout-frequency" value="6">
+							  <label class="form-check-label">Multiple sessions daily</label>
+							</div>
+
+				    </div>
+				  </div>
+				</div>
+
+				<div class="card shadow-sm mb-3">
+				  <div class="card-body">
+				    <h5 class="card-title">Do you have visible six-pack abs?</h5>
+				    <div class="card-text">
+				    	
+				    	<div class="form-check form-check-inline">
+							  <input class="data-hj-whitelist form-check-input" type="radio" name="abs" value="yes">
+							  <label class="form-check-label">Yes</label>
+							</div>
+							<div class="form-check form-check-inline">
+							  <input class="data-hj-whitelist form-check-input" type="radio" name="abs" value="ok">
+							  <label class="form-check-label">Somewhat</label>
+							</div>
+							<div class="form-check form-check-inline">
+							  <input class="data-hj-whitelist form-check-input" type="radio" name="abs" value="no">
+							  <label class="form-check-label">No</label>
+							</div>
+
+				    </div>
+				  </div>
+				</div>
+
+				<div class="card shadow-sm mb-4">
+				  <div class="card-body">
+				  	<a class="btn btn-primary float-right" data-toggle="collapse" href="#fitness-details">
+					    Show/hide
+					  </a>
+
+				    <h5 class="card-title">Exercise statistics:</h5>
+			    	<h6 class="card-subtitle m-0 text-muted">How strong are you?</h6>
+
+				    <div class="card-text collapse" id='fitness-details'>
+				    	<hr>
+				    	<div class="form-group">
+    						<label>Push-ups without stopping:</label>
+						    <input type="number" class="form-control" placeholder="Enter number" name='push-ups'>
+						  </div>
+						  <div class="form-group">
+    						<label>Pull-ups without stopping:</label>
+						    <input type="number" class="form-control" placeholder="Enter number" name='pull-ups'>
+						  </div>
+						  <div class="form-group">
+    						<label>Max bench press weight:</label>
+    						<div class="input-group">
+						    	<input type="number" class="form-control" placeholder="Enter pounds" name='bench-press'>
+						    	<div class="input-group-append">
+	                  <div class="input-group-text">lb</div>
+	                </div>
+						    </div>
+						  </div>
+						  <div class="form-group">
+    						<label>Max deadlift weight:</label>
+    						<div class="input-group">
+						    	<input type="number" class="form-control" placeholder="Enter pounds" name='deadlift'>
+						    	<div class="input-group-append">
+	                  <div class="input-group-text">lb</div>
+	                </div>
+						    </div>
+						  </div>
+						  <div class="form-group mb-0">
+    						<label>Mile time:</label>
+
+							  <div class="input-group">
+		                <input type="number" class="form-control" placeholder="Minutes" name='mile-minutes'>
+		                <div class="input-group-prepend input-group-append">
+		                  <div class="input-group-text">
+							    			<strong>:</strong>
+							    		</div>
+		                </div>
+		                <input type="number" class="form-control" placeholder="Seconds" name='mile-seconds'>
+		            </div>
+						  </div>
+
+				    </div>
+				  </div>
+				</div>
+
+				<h2 class='mx-4 mb-3 pt-2'>
 					<i class="fas fa-user-tie"></i>&emsp13;Finances & Lifestyle
 				</h2>
 
@@ -847,13 +933,95 @@
 				  </div>
 				</div>
 
+				<p class='lead text-center mb-0'>
+					You reached the end of the questionaire.
+					Scroll down to see your results.
+				</p>
+
+				<hr class='my-4'>
+
+				<h1 class='text-center mb-3' id='end-card-anchor'>
+					Results
+				</h1>
+
+				<div class="result card shadow mb-0 text-center" id='result-loser'>
+				  <div class="card-body">
+
+				  	<img src='loser-archetype.jpg' class='img-thumbnail lg' alt='Loser'>
+
+				    <h4 class="card-title mb-0 mt-3">Your Man-Level:
+				    	<span class='text-danger'>Loser</span>
+				    </h4>
+				    <hr>
+				    <div class="card-text text-left">
+				    	
+							<p class='mb-0'>
+								Loser is the lowest category of the manliness scale.
+								A typical loser is a stupid obese nerd with a neckbeard who can't get a girlfriend and has no money. He has a small penis.
+							</p>
+
+				    </div>
+				  </div>
+				</div>
+
+				<div class="result card shadow mb-0 text-center" id='result-ordinary'>
+				  <div class="card-body">
+
+				  	<img src='man-archetype.jpg' class='img-thumbnail lg' alt='Regular Man'>
+
+				    <h4 class="card-title mb-0 mt-3">Your Man-Level:
+				    	<span class='text-secondary'>Regular Man</span>
+				    </h4>
+				    <hr>
+				    <div class="card-text text-left">
+				    	
+							<p class='mb-0'>
+								A regular man is far from ideal; he may be flat average at everything, or he may be successful in one dimension but below-average in many other important areas. Regular men can get girls if they put in substantial effort, but the girls they date usually aren't that attractive.
+							</p>
+
+				    </div>
+				  </div>
+				</div>
+
+				<div class="result card shadow mb-0 text-center" id='result-masculine'>
+				  <div class="card-body">
+
+				  	<img src='manly-man-archetype.jpg' class='img-thumbnail lg' alt='Manly Man'>
+
+				    <h4 class="card-title mb-0 mt-3">Your Man-Level:
+				    	<span class='text-success'>Manly Man</span>
+				    </h4>
+				    <hr>
+				    <div class="card-text text-left">
+				    	
+							<p class='mb-0'>
+								Congratulations! You're a manly man. Manly men are successful in life. They have money, power, good looks, strength, and women. However, the magnitude of their success pales in comparison to that of alpha males.
+							</p>
+
+				    </div>
+				  </div>
+				</div>
+
+				<div class="result card shadow mb-0 text-center" id='result-alpha'>
+				  <div class="card-body">
+
+				  	<img src='alpha-male-archetype.jpg' class='img-thumbnail lg' alt='Alpha Male (Chad)'>
+
+				    <h4 class="card-title mb-0 mt-3">Your Man-Level:
+				    	<span class='text-info'>Alpha Male</span>
+				    </h4>
+				    <hr>
+				    <div class="card-text text-left">
+				    	
+							<p class='mb-0'>
+								Bravo! You're an alpha male, the pinnacle of masculinity! Alpha males exude dominance in every aspect of their manly lives&mdash;they're multimillionaire CEOs with godlike physiques who have no problem finding 10/10 women to sleep with every day. Alpha males have never cried a tear in their life, and they never back down from fights (which they always win).
+							</p>
+
+				    </div>
+				  </div>
+				</div>
+
 			</div>
-
-			<p class='lead text-center mb-0'>
-				You reached the end of the questionaire.
-				Look at the bar at the top to see your result.
-			</p>
-
 		</div>
 	</main>
 
@@ -885,7 +1053,7 @@
 		'use strict';
 
 		var unfilled = [
-			'yearly-females',
+			'lifetime-females',
 			'xy-chromosomes',
 			'realman',
 			'v-card-loss-age',
@@ -906,7 +1074,7 @@
 
 			'income',
 			'rich',
-			'items',
+			//'items',
 			'games',
 			'athletics'
 		];
@@ -914,12 +1082,17 @@
 		var filledCount = 0;
 
 		function updateProgress(ename) {
+			var bar = $('footer');
 			if (unfilled.includes(ename)) {
 				const index = unfilled.indexOf(ename);
 				unfilled.splice(index, 1);
 				filledCount++;
+				if (!unfilled.length) {
+					location.hash = '#end-card-anchor';
+					bar.addClass('faded1');
+				}
 			}
-			$('footer .progress-bar').css('width', filledCount / (filledCount + unfilled.length) * 100 + '%');
+			bar.find('.progress-bar').css('width', filledCount / (filledCount + unfilled.length) * 100 + '%');
 		}
 
 		function linterp(x, a, b) {
@@ -934,6 +1107,23 @@
 				[[3, 4], [3.05, 4]]
 			];
 			var v = Math.max(Math.min(masculinity, 4), 0);
+
+			var typeIndicator = 'loser';
+			switch (Math.floor(v).toString()) {
+				case '1':
+					typeIndicator = 'ordinary';
+					break;
+				case '2':
+					typeIndicator = 'masculine';
+					break;
+				case '3':
+				case '4':
+					typeIndicator = 'alpha';
+					break;
+				default:
+					break;
+			}
+			$('body').attr('data-type', typeIndicator);
 
 			for (let zone of scales) {
 				if (v >= zone[0][0] && v < zone[0][1]) {
@@ -960,36 +1150,43 @@
 			return $('[name="xy-chromosomes"][value="yes"]').is(':checked');
 		}
 
-		function straightNonVirgin() {
-			return !$('[name="realman"][value="no"]').is(':checked');
+		function nonVirgin(acceptEmpty=false) {
+			var s = $('[name="lifetime-females"]').val();
+
+			if (acceptEmpty && s === '') s = 1;
+
+			return /^[1-9].*$/gmi.test(s);
 		}
 
 		function sigmoid(a, b, c, d, x) {
 			return 2*b * (1 / (1 + Math.E**(-(x - c)/a)) - 0.5) + d;
 		}
 
+		function nummify(str) {
+			return str === '' ? NaN : Number(str);
+		}
+
 		function recalc() {
 
-			const bodyFat = Number($('input[name="bfp"]').val());
+			const FFMI = nummify($('input[name="ffmi-answer"]').val());
+			const defaultFFMI = 19;
+
+			var bodyFat = nummify($('input[name="bfp"]').val());
 			const defaultBodyFat = 15;
 
-			var vCard = $('input[name="v-card-loss-age"]').val();
-			vCard = vCard === '' ? -1 : Number(vCard);
+			var vCard = nummify($('input[name="v-card-loss-age"]').val());
 			const defaultVcard = 17;
 
-			var girls = $('input[name="yearly-females"]').val();
-			girls = girls === '' ? -1 : Number(girls);
-			const defaultGirls = 3.5;
+			var girls = nummify($('input[name="lifetime-females"]').val());
+			const defaultGirls = 14;
 
-			var length = $('input[name="size-length"]').val();
-			length = length === '' ? -1 : Number(length);
+			var length = nummify($('input[name="size-length"]').val());
 			const defaultLength = 5.5;
 
-			var girth = $('input[name="size-girth"]').val();
-			girth = girth === '' ? -1 : Number(girth);
+			var girth = nummify($('input[name="size-girth"]').val());
 			const defaultGirth = 5;
 
-			var masculinity = straightNonVirgin() * enabled() * (
+			var masculinity = nonVirgin(true) * !$('[name="realman"][value="no"]').is(':checked') * enabled() * (
 
 			(enabled() ? 1.5 : 0) +
 			0.4 * (
@@ -1044,12 +1241,14 @@
 					'no' : -0.2
 				}, $('input[name="jaw"]:checked')) +
 				lookup({
-					'1' : -0.5,
-					'2' : -0.3,
-					'3' : 0,
-					'4' : 0.2,
-					'5' : 0.3,
-					'6' : 0.4
+					'62' : -0.9,
+					'64' : -0.5,
+					'67' : -0.3,
+					'70' : 0,
+					'73' : 0.3,
+					'76' : 0.4,
+					'79' : 0.45,
+					'81' : 0.5
 				}, $('input[name="height"]:checked')) +
 				lookup({
 					'1' : -0.4,
@@ -1078,7 +1277,8 @@
 					'ok' : 0.05,
 					'yes' : 0.15,
 				}, $('input[name="abs"]:checked')) +
-				sigmoid(5, -0.5, 15, 0, (bodyFat > 0 && bodyFat <= 100 ? bodyFat : defaultBodyFat))
+				sigmoid(5, -0.5, 15, 0, (!isNaN(bodyFat) ? bodyFat : defaultBodyFat)) +
+				sigmoid(5, 1, 15.5, -0.5, (!isNaN(FFMI) ? FFMI : defaultFFMI))
 			) +
 			0.8 * (
 				lookup({
@@ -1088,16 +1288,33 @@
 					'4' : 0.1,
 					'5' : 0.2
 				}, $('input[name="sex-frequency"]:checked')) +
-				sigmoid(2, -0.75, 18, -0.2, (vCard >= 0 ? vCard : defaultVcard)) +
-				Math.log10(sigmoid(100, 1, 0, 0, (girls >= 0 ? girls : defaultGirls) + 0.1)) + 1.75 +
+				sigmoid(2, -0.75, 18, -0.2, (!isNaN(vCard) ? vCard : defaultVcard)) +
+				Math.log10(sigmoid(100, 1, 0, 0, Math.max(0, !isNaN(girls) ? girls : defaultGirls) + 0.1)) + 1.15 +
 				(
-					sigmoid(1, 1, 5.5, 0, (length >= 0 ? length : defaultLength)) +
-					sigmoid(0.75, 1, 5, 0, (girth >= 0 ? girth : defaultGirth))
+					sigmoid(1, 1, 5.5, 0, (!isNaN(length) ? length : defaultLength)) +
+					sigmoid(0.75, 1, 5, 0, (!isNaN(girth) ? girth : defaultGirth))
 				) / 2
 			)
 			);
 
 			setScore(masculinity);
+		}
+
+		function recalFFMI() {
+			const output = $('[name="ffmi-answer"]');
+
+			const heightSelection = $('input[name="height"]:checked');
+			const bodyFat = $('input[name="bfp"]').val();
+			const pounds = $('input[name="weight"]').val();
+
+			if (!(heightSelection.toArray().length && bodyFat && pounds)) {
+				output.val('');
+				return;
+			}
+
+			const h = Number(heightSelection.val()) / 39.3701;
+			const ffmi = (100 - Number(bodyFat)) / 100 * Number(pounds) / 2.205 / h**2 + (6.1 * (1.8 - h));
+			output.val(ffmi.toLocaleString('fullwide', {useGrouping : false}));
 		}
 		
 		$(document).on('input', (e) => {
@@ -1105,12 +1322,18 @@
 			updateProgress($(e.target).attr('name'));
 		});
 
+		$('#height-entry').on('input', (e) => {
+			$('[name="height-autofill"]').val($('input[name="height"]:checked + label').html());
+			recalFFMI();
+		});
+		$('#ffmi-calc').on('input', recalFFMI);
+
 		$('#chromosomal-check').on('input', (e) => {
 			$('#main-bloc')[enabled() ? 'removeClass' : 'addClass']('disabled');
 		});
 
 		$('#sex-check').on('input', (e) => {
-			$('#sex-bloc')[straightNonVirgin() ? 'removeClass' : 'addClass']('disabled');
+			$('#sex-bloc')[nonVirgin() ? 'removeClass' : 'addClass']('disabled');
 		});
 
 	</script>
